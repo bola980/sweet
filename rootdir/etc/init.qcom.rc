@@ -1050,6 +1050,7 @@ on property:vendor.opengles.version=*
 on property:vendor.gpu.available_frequencies=*
     setprop ro.vendor.gpu.available_frequencies ${vendor.gpu.available_frequencies}
 
+<<<<<<< HEAD
 service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     override
     class hal
@@ -1061,6 +1062,14 @@ service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
     socket audio_hw_socket seqpacket 0666 system system
     onrestart restart audioserver
+=======
+#Processgroup
+    chown system system /acct/uid_*
+    chmod 0777 /acct/uid_*
+
+on property:init.svc.face_hal=restarting
+    stop face_hal
+>>>>>>> f7c6d11... RMX206X:init: set proper permission to /acct/uid_*
 
 #nv_mac is added by Xiaomi-Wifi
 service nv_mac /vendor/bin/nv_mac
